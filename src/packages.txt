@@ -1,0 +1,460 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { API_KEY_financial } from "../../Data/Keys";
+import { findFlagUrlByNationality } from "country-flags-svg";
+import "./Indices.css";
+import Index from "./Index";
+import { countries } from "country-flags-svg";
+
+function Indices() {
+  const [dowJonestitle, setDowJonestitle] = useState("");
+  const [dowJonesprice, setDowJonesprice] = useState("");
+  const [dowJoneschange, setdowJoneschange] = useState("");
+  const [dowJonespercent, setdowJonespercent] = useState("");
+
+  const [snp500title, setSnp500title] = useState("");
+  const [snp500price, setSnp500price] = useState("");
+  const [snp500change, setSnp500change] = useState("");
+  const [snp500percent, setSnp500percent] = useState("");
+
+  const [nasdaqtitle, setNasdaqtitle] = useState("");
+  const [nasdaqprice, setNasdaqprice] = useState("");
+  const [nasdaqchange, setNasdaqchange] = useState("");
+  const [nasdaqpercent, setNasdaqpercent] = useState("");
+
+  const [canadatitle, setCanadatitle] = useState("");
+  const [canadaprice, setCanadaprice] = useState("");
+  const [canadachange, setCanadachange] = useState("");
+  const [canadapercent, setCanadapercent] = useState("");
+
+  const [londontitle, setLondontitle] = useState("");
+  const [londonprice, setLondonprice] = useState("");
+  const [londonchange, setLondonchange] = useState("");
+  const [londonpercent, setLondonpercent] = useState("");
+
+  const [germanytitle, setGermanytitle] = useState("");
+  const [germanyprice, setGermanyprice] = useState("");
+  const [germanychange, setGermanychange] = useState("");
+  const [germanypercent, setGermanypercent] = useState("");
+
+  const [francetitle, setFrancetitle] = useState("");
+  const [franceprice, setFranceprice] = useState("");
+  const [francechange, setFrancechange] = useState("");
+  const [francepercent, setFrancepercent] = useState("");
+
+  const [russelltitle, setRusselltitle] = useState("");
+  const [russellprice, setRussellprice] = useState("");
+  const [russellchange, setRussellchange] = useState("");
+  const [russellpercent, setRussellpercent] = useState("");
+  //--------------------
+  const [mexicotitle, setMexicotitle] = useState("");
+  const [mexicoprice, setMexicoprice] = useState("");
+  const [mexicochange, setMexicochange] = useState("");
+  const [mexicopercent, setMexicopercent] = useState("");
+  //^MXX
+
+  const [hollandtitle, setHollandtitle] = useState("");
+  const [hollandprice, setHollandprice] = useState("");
+  const [hollandchange, setHollandchange] = useState("");
+  const [hollandpercent, setHollandpercent] = useState("");
+
+  const [europetitle, setEuropetitle] = useState("");
+  const [europeprice, setEuropeprice] = useState("");
+  const [europechange, setEuropechange] = useState("");
+  const [europepercent, setEuropepercent] = useState("");
+
+  const [Russiatitle, setRussiatitle] = useState("");
+  const [Russiaprice, setRussiaprice] = useState("");
+  const [Russiachange, setRussiachange] = useState("");
+  const [Russiapercent, setRussiapercent] = useState("");
+
+  const [tokyotitle, setTokyotitle] = useState("");
+  const [tokyoprice, setTokyoprice] = useState("");
+  const [tokyochange, setTokyochange] = useState("");
+  const [tokyopercent, setTokyopercent] = useState("");
+
+  const [europe2title, setEurope2title] = useState("");
+  const [europe2price, setEurope2price] = useState("");
+  const [europe2change, setEurope2change] = useState("");
+  const [europe2percent, setEurope2percent] = useState("");
+
+  const [spaintitle, setSpaintitle] = useState("");
+  const [spainprice, setSpainprice] = useState("");
+  const [spainchange, setSpainchange] = useState("");
+  const [spainpercent, setSpainpercent] = useState("");
+
+  const [shanghaititle, setShanghaititle] = useState("");
+  const [shanghaiprice, setShanghaiprice] = useState("");
+  const [shanghaichange, setShanghaichange] = useState("");
+  const [shanghaipercent, setShanghaipercent] = useState("");
+
+  const [koreatitle, setKoreatitle] = useState("");
+  const [koreaprice, setKoreaprice] = useState("");
+  const [koreachange, setKoreachange] = useState("");
+  const [koreapercent, setKoreapercent] = useState("");
+
+  const [honghongtitle, setHonghongtitle] = useState("");
+  const [honghongprice, setHonghongprice] = useState("");
+  const [honghongchange, setHonghongchange] = useState("");
+  const [honghongpercent, setHonghongpercent] = useState("");
+
+  const [indiatitle, setIndiatitle] = useState("");
+  const [indiaprice, setIndiaprice] = useState("");
+  const [indiachange, setIndiachange] = useState("");
+  const [indiapercent, setIndiapercent] = useState("");
+
+  const [braziltitle, setBraziltitle] = useState("");
+  const [brazilprice, setBrazilprice] = useState("");
+  const [brazilchange, setBrazilchange] = useState("");
+  const [brazilpercent, setBrazilpercent] = useState("");
+
+  const [goldtitle, setGoldtitle] = useState("");
+  const [goldprice, setGoldprice] = useState("");
+  const [goldchange, setGoldchange] = useState("");
+  const [goldpercent, setGoldpercent] = useState("");
+
+  const [silvertitle, setSilvertitle] = useState("");
+  const [silverprice, setSilverprice] = useState("");
+  const [silverchange, setSilverchange] = useState("");
+  const [silverpercent, setSilverpercent] = useState("");
+
+  const [oiltitle, setOiltitle] = useState("");
+  const [oilprice, setOilprice] = useState("");
+  const [oilchange, setOilchange] = useState("");
+  const [oilpercent, setOilpercent] = useState("");
+
+  useEffect(() => {
+    fetchIndicesData();
+  }, []);
+
+  const fetchIndicesData = async () => {
+    try {
+      const response = await axios.get(
+        `https://financialmodelingprep.com/api/v3/quotes/index?apikey=${API_KEY_financial}`
+      );
+
+      for (var item in response.data) {
+        if (response.data[item].symbol === "^GSPC") {
+          setSnp500title(response.data[item].name);
+          setSnp500price(response.data[item].price);
+          setSnp500change(response.data[item].change);
+          setSnp500percent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^DJI") {
+          setDowJonestitle(response.data[item].name);
+          setDowJonesprice(response.data[item].price);
+          setdowJoneschange(response.data[item].change);
+          setdowJonespercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^IXIC") {
+          setNasdaqtitle(response.data[item].name);
+          setNasdaqprice(response.data[item].price);
+          setNasdaqchange(response.data[item].change);
+          setNasdaqpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^GSPTSE") {
+          setCanadatitle(response.data[item].name);
+          setCanadaprice(response.data[item].price);
+          setCanadachange(response.data[item].change);
+          setCanadapercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^FTSE") {
+          setLondontitle(response.data[item].name);
+          setLondonprice(response.data[item].price);
+          setLondonchange(response.data[item].change);
+          setLondonpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^GDAXI") {
+          setGermanytitle(response.data[item].name);
+          setGermanyprice(response.data[item].price);
+          setGermanychange(response.data[item].change);
+          setGermanypercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^FCHI") {
+          setFrancetitle(response.data[item].name);
+          setFranceprice(response.data[item].price);
+          setFrancechange(response.data[item].change);
+          setFrancepercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^RUT") {
+          setRusselltitle(response.data[item].name);
+          setRussellprice(response.data[item].price);
+          setRussellchange(response.data[item].change);
+          setRussellpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^MXX") {
+          setMexicotitle(response.data[item].name);
+          setMexicoprice(response.data[item].price);
+          setMexicochange(response.data[item].change);
+          setMexicopercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^AEX") {
+          setHollandtitle(response.data[item].name);
+          setHollandprice(response.data[item].price);
+          setHollandchange(response.data[item].change);
+          setHollandpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^STOXX50E") {
+          setEuropetitle(response.data[item].name);
+          setEuropeprice(response.data[item].price);
+          setEuropechange(response.data[item].change);
+          setEuropepercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "IMOEX.ME") {
+          setRussiatitle(response.data[item].name);
+          setRussiaprice(response.data[item].price);
+          setRussiachange(response.data[item].change);
+          setRussiapercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^N225") {
+          setTokyotitle(response.data[item].name);
+          setTokyoprice(response.data[item].price);
+          setTokyochange(response.data[item].change);
+          setTokyopercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^N100") {
+          setEurope2title(response.data[item].name);
+          setEurope2price(response.data[item].price);
+          setEurope2change(response.data[item].change);
+          setEurope2percent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^IBEX") {
+          setSpaintitle(response.data[item].name);
+          setSpainprice(response.data[item].price);
+          setSpainchange(response.data[item].change);
+          setSpainpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^SSEC") {
+          setShanghaititle(response.data[item].name);
+          setShanghaiprice(response.data[item].price);
+          setShanghaichange(response.data[item].change);
+          setShanghaipercent(response.data[item].changesPercentage);
+        }
+
+        if (response.data[item].symbol === "^KS11") {
+          setKoreatitle(response.data[item].name);
+          setKoreaprice(response.data[item].price);
+          setKoreachange(response.data[item].change);
+          setKoreapercent(response.data[item].changesPercentage);
+        }
+
+        if (response.data[item].symbol === "^HSI") {
+          setHonghongtitle(response.data[item].name);
+          setHonghongprice(response.data[item].price);
+          setHonghongchange(response.data[item].change);
+          setHonghongpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^BSESN") {
+          setIndiatitle(response.data[item].name);
+          setIndiaprice(response.data[item].price);
+          setIndiachange(response.data[item].change);
+          setIndiapercent(response.data[item].changesPercentage);
+        }
+
+        if (response.data[item].symbol === "^BVSP") {
+          setBraziltitle(response.data[item].name);
+          setBrazilprice(response.data[item].price);
+          setBrazilchange(response.data[item].change);
+          setBrazilpercent(response.data[item].changesPercentage);
+        }
+
+        if (response.data[item].symbol === "^GVZ") {
+          setGoldtitle(response.data[item].name);
+          setGoldprice(response.data[item].price);
+          setGoldchange(response.data[item].change);
+          setGoldpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^VXSLV") {
+          setSilvertitle(response.data[item].name);
+          setSilverprice(response.data[item].price);
+          setSilverchange(response.data[item].change);
+          setSilverpercent(response.data[item].changesPercentage);
+        }
+        if (response.data[item].symbol === "^OVX") {
+          setOiltitle(response.data[item].name);
+          setOilprice(response.data[item].price);
+          setOilchange(response.data[item].change);
+          setOilpercent(response.data[item].changesPercentage);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div className="indices">
+      <div className="indices_row first">
+        <Index
+          website={
+            "https://www.barchart.com/stocks/indices/dowjones/industrials"
+          }
+          title="Dow Jones Industrial Average"
+          image={findFlagUrlByNationality("American")}
+          price={dowJonesprice}
+          change={dowJoneschange}
+          percent={dowJonespercent}
+        />
+        <Index
+          website={"https://www.barchart.com/stocks/indices/sp/sp500"}
+          title={snp500title}
+          image={findFlagUrlByNationality("American")}
+          price={snp500price}
+          change={snp500change}
+          percent={snp500percent}
+        />
+        <Index
+          website={"https://www.barchart.com/stocks/indices/nasdaq/nasdaq100"}
+          title={nasdaqtitle}
+          image={findFlagUrlByNationality("American")}
+          price={nasdaqprice}
+          change={nasdaqchange}
+          percent={nasdaqpercent}
+        />
+        <Index
+          website={
+            "https://www.barchart.com/ca/stocks/indices/tsx/tsx-composite"
+          }
+          title={canadatitle}
+          image={findFlagUrlByNationality("Canadian")}
+          price={canadaprice}
+          change={canadachange}
+          percent={canadapercent}
+        />
+        <Index
+          website={"https://www.barchart.com/stocks/quotes/$MXX"}
+          title="BOLSA IPC"
+          image={findFlagUrlByNationality("Mexican")}
+          price={mexicoprice}
+          change={mexicochange}
+          percent={mexicopercent}
+        />
+        <Index
+          website={"https://www.barchart.com/stocks/quotes/$GVZ"}
+          title={goldtitle}
+          image="data:image/jpeg;base64,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"
+          price={goldprice}
+          change={goldchange}
+          percent={goldpercent}
+        />
+      </div>
+
+      <div className="indices_row">
+        <Index
+          website={
+            "https://www.barchart.com/futures/quotes/FX*0/futures-prices"
+          }
+          title={europetitle}
+          image="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+          price={europeprice}
+          change={europechange}
+          percent={europepercent}
+        />
+        <Index
+          website={"https://www.barchart.com/futures/quotes/X*0/futures-prices"}
+          title={londontitle}
+          image={findFlagUrlByNationality("British")}
+          price={londonprice}
+          change={londonchange}
+          percent={londonpercent}
+        />
+        <Index
+          website={
+            "https://www.barchart.com/futures/quotes/MX*0/futures-prices"
+          }
+          title={francetitle}
+          image={findFlagUrlByNationality("French")}
+          price={franceprice}
+          change={francechange}
+          percent={francepercent}
+        />
+        <Index
+          website={
+            "https://www.barchart.com/futures/quotes/DY*0/futures-prices"
+          }
+          title="DAX INDEX"
+          image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACuCAMAAAClZfCTAAAAElBMVEUAAAD/zgDdAADnAADaAAD/2AAtsSEoAAAA+ElEQVR4nO3QMQGAMAAEsYeCf8tIuI0pkZANAAAAAAAAAAAAAAAAAAAAgB8dwm6CoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKewh7CbsIipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUofMGTNC8HkSxoAAAAASUVORK5CYII="
+          price={germanyprice}
+          change={germanychange}
+          percent={germanypercent}
+        />
+        <Index
+          website={
+            "https://www.barchart.com/futures/quotes/ES*0/futures-prices"
+          }
+          title="MOEX &nbsp;&nbsp; Russian Index"
+          image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAD1BMVEX///8AOabVKx4AMqTTKxXmvQ9FAAAA9UlEQVR4nO3QsQGAMAzAsBT4/2b2eOwqnaAZAAAAAAAAAAAAAAAAAAAAAK69bHPYnJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JS87HNw+aknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk3JSTspJOSkn5aSclJNyUk7KSTkpJ+WknJSTclJOykk5KSflpJyUk/oBg6TI4mvpq6EAAAAASUVORK5CYII="
+          price={Russiaprice}
+          change={Russiachange}
+          percent={Russiapercent}
+        />
+        <Index
+          website={"https://www.barchart.com/stocks/quotes/$VSLV"}
+          title="CBOE Silver Volatility Index"
+          image="data:image/jpeg;base64,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"
+          price={silverprice}
+          change={silverchange}
+          percent={silverpercent}
+        />
+      </div>
+
+      <div className="indices_row">
+        <Index
+          website={"https://www.barchart.com/futures/quotes/XLY00"}
+          title="Shanghai  Composite Index"
+          image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAjVBMVEXuHCX//wDtACb71w/uEyXuDSb//ADuACX++APyYB/vLiPyZh75uhP4shX+9gT84wr97Af3phfwSSH96Aj82wzzcB31lBn5vxL+8AXxVSD5xBHzexzuJCT70A/xWyDvOSL3qxb2mhj0ghvyax7wQSL1jRr2nhf6yBD1jxr4thT0fRz70RD0hhvzdR3wTiKM2NAWAAAEoklEQVR4nO3cbXeaMBgGYPOYiOILqKhoUdtpbdfV/v+ft0RAcFpNWFsh3NeXnZ3VHXKT96Q2GgAAAABQc+LeD1A+9LDi936GskiqhxixNTKJRVOHZBY8ajFEkqA+67skHJ+16d7PUho0YGy5ChjzkUlK7FmsiUyOqBln4q3J9uFYu8fkLktryoSsrit8pPuT1GFHg537nQ91ZzTr6NUUOTE5ChfTD4tHZBr0tdoBj9pJILO9S0QWR8LnLNTKxAkZa73IoZjNbc5DoUfGdJqBWLw8j4hUN7u1PJIGydf/qFNR4uZCQ2b91J6rjtNkYioztHoYbsTvnbGR/qsXE+uXOzRWmQxNKopWS6swvj2MrmOTYp7M6y3sW2gXTzmK7hJFW/tWPuTFmewKtgfy1+n2my01hq+TqalXNJOg5apQBG26loRCT+kCpmDjoR4bREJQJ7BmhE6bDmNPxYqkQh3wrpzx/7Ikk2xDpGjjERP52ZbhtK/UaJqt/t1CjYfSVPe2jD8UZJlMC7xoov04/nRQzWpC5xpZJLJU566/e0Fv/rHpOZUcdWZB819eLhN29q9N7/laKOK9nft00cH8vuSwaejGUMJHD8NlmNWzHyrHl6KJUSKee6uUXMj2pbrpMKxuKFFwK4jMo94G42EwXhPvvM6quV7m6ZLvpnZHs4BqYd0j1eFW9sSH5gOdSJZce7ohGIsqOeZkhPNyO5JXky0mzaOQUqNfNxLxRyaFpGb0bY/6c2g9vhZJz+yAnNtxssGp/3kke9OWYEUkEm1alxMJbk5K7EWN5qVIhrafel5FmwuRtOpbSRRaXKonE1t2QQqhi93Jos4VRVxeD9a68dDs8rizqXHjoU/G4lmBimJJjKJ7OZIijUeYrI5K7GTP7WmZ+0vX+K2Tb/6ZMso1ncEH5Y80esYvPSrU4EpHZBddXxz5kml03FYdmJZPvDHmfMtT/iz6nUaQbEOLbBzqGDYENfl7s6DxULLZNl4fawWlv2Cgv0PE40OgNmN/5B+OiKp8s5qv0uLnVnzkemaNh2/6j/3e4o/6kK+OerwqZxJvn7S6p6Xn8XU/NtddGue7ZqMKVkbqSixrNs7KQB31uvWPJMjNnY08VDoS/sHUkfmF6iCEnKro3TSP/yd6TRLxt5WORN0mDz/bhqZnvZvmx59PNrxNLpOWEbUXzqeDJ21Dk44h3YYxntaUCx89XysAp53BbEONxO2g0JqgVG6d8Rm8cj6XQ3CkLrXVejfqhBy+e7KzVidGNszvvwSN3w/1Q85trt7fqZNonjYZsuGE9GvU+TjoBII4Q78xxvyDdgazf8tto8MlDOpW9DbftxjMVkTCVVtI936UslCbuOHQ9RlbIpPU8QAE8/iMk1wmD+ZWf1uBkewIJNy5SOWAR7ntV0/zG0IsR8dfTWHLVzuuO/4vSm8bL1Z2f/2JvsNd/dCr/Bb9FxIPbDldk9Oq+623HL5yVINRZ6imR8r2SjoQ2atonxTWh9EBUD3Qu8E3yNQFehMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA49ReVBijAyEOfcwAAAABJRU5ErkJggg=="
+          price={shanghaiprice}
+          change={shanghaichange}
+          percent={shanghaipercent}
+        />
+
+        <Index
+          website={
+            "https://www.barchart.com/futures/quotes/NL*0/futures-prices"
+          }
+          title={tokyotitle}
+          image="data:image/png;base64,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"
+          price={tokyoprice}
+          change={tokyochange}
+          percent={tokyopercent}
+        />
+        <Index
+          website={"https://www.barchart.com/futures/quotes/KQY00"}
+          title={koreatitle}
+          image="https://c4.wallpaperflare.com/wallpaper/737/481/96/south-korea-flag-wallpaper-preview.jpg"
+          price={koreaprice}
+          change={koreachange}
+          percent={koreapercent}
+        />
+        <Index
+          website={"https://www.barchart.com/futures/quotes/NVY00"}
+          title={indiatitle}
+          image="data:image/png;base64,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"
+          price={indiaprice}
+          change={indiachange}
+          percent={indiapercent}
+        />
+
+        <Index
+          website={"https://www.barchart.com/stocks/quotes/$BVSP"}
+          title={braziltitle}
+          image={findFlagUrlByNationality("Brazilian")}
+          price={brazilprice}
+          change={brazilchange}
+          percent={brazilpercent}
+        />
+        <Index
+          website={
+            "https://www.barchart.com/stocks/quotes/$OVX/technical-chart"
+          }
+          title={oiltitle}
+          image="https://static-news.moneycontrol.com/static-mcnews/2018/10/Oil-Crude-Oil-770x433.jpg"
+          price={oilprice}
+          change={oilchange}
+          percent={oilpercent}
+        />
+      </div>
+    </div>
+  );
+}
+export default Indices;

@@ -1,0 +1,81 @@
+.stockcharts {
+  background: url("../../Components/Home/blur2.jpg") no-repeat;
+  background-size: cover;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.stockcharts_navbar {
+  width: 80%;
+  margin-left: 12%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbarItems {
+  margin-top: 2em;
+}
+
+.stockcharts_navbar_routes {
+  color: rgb(212, 209, 209);
+  font-size: 48px;
+  padding-right: 1rem;
+  display: inline-block;
+  text-decoration: none;
+}
+.stockcharts_navbar_routes:hover {
+  color: rgb(255, 255, 255);
+}
+
+.stockcharts_indicies {
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+.makingsureitworks {
+  outline: solid 2px yellow;
+  position: absolute;
+  padding-top: 0px;
+  margin-top: 200px;
+}
+
+.stockcharts_marketOverview_winnersLosers {
+  padding-top: 10px;
+  margin-top: 250px;
+}
+
+.stockcharts_marketOverview_right {
+  padding-top: 10px;
+}
+
+.other {
+  position: relative;
+}
+
+.stockcharts_searchContainer {
+  padding-top: 0px;
+  margin-top: 100px;
+
+  background-color: rgb(228, 227, 227);
+}
+
+.stockcharts_stockContainer {
+  background-color: rgb(228, 227, 227);
+}
+
+.stockcharts_navbar_signOut {
+  font-size: 32px;
+  padding-right: 250px;
+  margin-left: 150px;
+}
+
+@media screen and (max-width: 600px) {
+  .stockcharts_navbar_routes {
+    font-size: 20px;
+    margin-top: 0.5em;
+  }
+  html {
+    overflow-x: hidden;
+  }
+}

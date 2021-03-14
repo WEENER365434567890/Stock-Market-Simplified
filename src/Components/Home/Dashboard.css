@@ -1,0 +1,48 @@
+.dashboard {
+  background: url("../../Components/Home/blur2.jpg") repeat;
+  background-size: cover;
+  height: 300vh;
+  opacity: 0.9;
+}
+
+.dashboard_home_app {
+  font-size: 32px;
+  color: rgb(212, 209, 209);
+  padding-left: 250px;
+  top: 2%;
+  position: absolute;
+}
+
+.dashboard_navbar {
+  color: rgb(212, 209, 209);
+  position: absolute;
+  padding-left: 175px;
+  left: 60%;
+  top: 2%;
+  display: flex;
+}
+
+.dashboard_navbar_right {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  font-size: 32px;
+  padding-right: 50px;
+}
+
+.dashboard a {
+  color: rgb(212, 209, 209);
+  text-decoration: none;
+}
+
+.dashboard a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dashboard_navbar_signOut {
+  font-size: 32px;
+  padding-right: 250px;
+  margin-left: 150px;
+}

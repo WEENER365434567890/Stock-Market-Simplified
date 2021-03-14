@@ -1,0 +1,21 @@
+.carousel {
+  width: 90%;
+  padding-top: 20px;
+  margin: auto;
+}
+
+.carousel img {
+  margin: auto;
+  height: 500px;
+  width: 500px;
+}
+
+.marketnews_carousel h6,
+.marketnews_carousel h3,
+.marketnews_carousel p {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+  overflow-x: hidden;
+}

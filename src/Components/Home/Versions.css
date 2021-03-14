@@ -1,0 +1,18 @@
+.versions {
+  background-color: rgba(255, 255, 255, 0.33);
+  margin-top: 20px;
+  border-radius: 1%;
+}
+
+.versions_number {
+  font-size: 32px;
+}
+
+.versions_details {
+  font-size: 20px;
+}
+
+.versions_date {
+  float: right;
+  font-size: 28px;
+}

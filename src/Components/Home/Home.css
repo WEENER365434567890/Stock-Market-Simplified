@@ -1,0 +1,143 @@
+html {
+  overflow-x: hidden !important;
+}
+
+.home {
+  background: url("blur2.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  opacity: 0.9;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.home_navbar {
+  width: 80%;
+  margin-left: 12%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+#navbar {
+  width: 100%;
+}
+
+#navbarItems {
+  justify-content: space-around;
+  display: flex;
+  margin-left: 2em;
+}
+
+.home_navbar_routes {
+  color: rgb(212, 209, 209);
+  font-size: 48px;
+  padding-right: 1rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.home_navbar_routes:hover {
+  color: rgb(255, 255, 255);
+}
+
+.home_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+
+  display: flex;
+}
+.home_center_text {
+  color: rgb(212, 209, 209);
+  opacity: 1;
+  text-align: center;
+}
+.home_center_text h1 {
+  font-size: 85px;
+}
+.home_center_text p {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.home_buttons {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.home_center_button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #999999;
+  /*  margin: 0 5em 1.3em 14em; */
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #313030;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 2%;
+}
+
+.home_center_button:hover {
+  color: #dbdbdb;
+  background-color: #383838;
+}
+
+@media screen and (max-width: 600px) {
+  div.home_center {
+    display: contents;
+  }
+  div.home_center_text h1 {
+    font-size: 28px;
+    padding-bottom: 2em;
+  }
+  div.home_center_text p {
+    font-size: 16px;
+    padding-bottom: 1.5em;
+  }
+  div#navbar_1 {
+    display: none;
+  }
+  div#navbar_2 {
+    width: 100%;
+    font-size: 2em;
+  }
+  .home_navbar_routes {
+    color: rgb(212, 209, 209);
+    font-size: 24px !important ;
+  }
+  .home_navbar {
+    padding-top: 2em;
+    padding-bottom: 6em;
+  }
+
+  .home_center_button {
+    margin-top: 5em;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home_navbar_routes {
+    color: rgb(212, 209, 209);
+    font-size: 18px;
+  }
+  div.home_center_text h1 {
+    font-size: 28px;
+    padding-bottom: 2em;
+  }
+  div.home_center_text p {
+    font-size: 16px;
+    padding-bottom: 1.5em;
+  }
+}

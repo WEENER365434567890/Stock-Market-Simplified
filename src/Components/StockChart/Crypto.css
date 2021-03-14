@@ -1,0 +1,47 @@
+.crypto {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  padding-right: 30px;
+  margin-left: 1.6em;
+}
+.crypto_link {
+  display: block;
+}
+.crypto_container {
+  width: 110px;
+  height: 160px;
+  border-radius: 5%;
+  background-color: #495057;
+}
+
+.crypto_image {
+  padding-left: 5px;
+}
+
+.crypto img {
+  border-radius: 80%;
+}
+
+.crypto_data p {
+  color: white;
+  font-size: 12px;
+  padding-left: 34px;
+  margin: 0;
+  font-weight: 780;
+}
+
+.color_postive {
+  color: rgb(107, 200, 79) !important;
+}
+
+.color_postive:hover {
+  font-size: 15px;
+}
+
+.color_negative {
+  color: rgb(238, 61, 21) !important;
+}
+.color_negative:hover {
+  font-size: 15px;
+}

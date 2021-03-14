@@ -1,0 +1,24 @@
+.timer {
+  padding-top: 10px;
+}
+
+.timer_marketStatus {
+  font-size: 40px;
+  margin-top: -0.47em;
+  padding-bottom: 0.1em;
+  color: rgb(212, 209, 209);
+}
+.timer_time {
+  margin-top: -1em;
+  font-size: 40px;
+  color: rgb(212, 209, 209);
+}
+
+@media screen and (max-width: 600px) {
+  .timer_marketStatus {
+    font-size: 20px;
+  }
+  .timer_time {
+    font-size: 20px;
+  }
+}

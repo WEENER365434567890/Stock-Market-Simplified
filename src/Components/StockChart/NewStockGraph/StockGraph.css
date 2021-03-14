@@ -1,0 +1,20 @@
+.stockgraph {
+  padding-top: 2%;
+}
+
+.stockgraph_radio {
+  padding-left: 2%;
+}
+
+.stockgraph_graph {
+  outline: solid red 2px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.stockgraph_text {
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 5px;
+  font-size: 15px;
+}

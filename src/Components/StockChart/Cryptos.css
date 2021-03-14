@@ -1,0 +1,7 @@
+.cryptos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2em;
+  margin-left: -1em;
+}

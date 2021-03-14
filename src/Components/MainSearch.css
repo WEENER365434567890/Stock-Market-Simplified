@@ -1,0 +1,89 @@
+.mainsearch {
+  position: absolute;
+  left: 40%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.mainsearch_searchBtn {
+  margin-right: 20px;
+}
+
+.mainsearch_container {
+  padding-left: 103px;
+  margin-top: -7px;
+}
+
+.mainsearch_option {
+  outline: 1px solid rgb(0, 0, 0);
+  background-color: rgba(228, 227, 227, 0.864) !important;
+  width: 178px;
+  color: black;
+}
+
+.mainsearch_input input {
+  border: rgb(0, 35, 36);
+  text-decoration: none;
+  width: 180px;
+}
+
+.mainsearch_input input:focus {
+  outline: none;
+}
+
+.mainsearch_addtoList {
+  display: inline-block;
+  border: 0.1em solid #999999;
+  margin: 0 0.5em 0.3em 0.2em;
+  border-radius: 5%;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #313030;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 2%;
+}
+.mainsearch_addtoList:hover {
+  color: #dbdbdb;
+  background-color: #383838;
+}
+
+.mainsearch_searchBtn {
+  display: inline-block;
+  border: 0.1em solid #999999;
+  margin: 0 0.5em 0.3em 0.2em;
+  border-radius: 5%;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #313030;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 2%;
+}
+.mainsearch_searchBtn:hover {
+  color: #dbdbdb;
+  background-color: #383838;
+}
+
+.mainsearch_randomBtn {
+  display: inline-block;
+  border: 0.1em solid #999999;
+  margin: 0 0.5em 0.3em 0.2em;
+  border-radius: 5%;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #313030;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 2%;
+}
+.mainsearch_randomBtn:hover {
+  color: #dbdbdb;
+  background-color: #383838;
+}

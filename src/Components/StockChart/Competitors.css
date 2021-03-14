@@ -1,0 +1,14 @@
+.competitor {
+  padding-top: 100px;
+}
+
+.competitor p {
+  font-weight: bold;
+  text-align: center;
+}
+
+.competitor_description {
+  font-weight: 400 !important;
+  font-style: italic;
+  padding-top: 20px;
+}
