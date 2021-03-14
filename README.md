@@ -8,4 +8,4 @@ Feel free to message/email me if you have any recommendations!
 
 Unfortunately cloning this project would not work since I am using multiple apis that require a registered api key.
 
-Login feature is necessary for limiting api request. Accounts will be deleted every 72 hours via firebase authentication. Thanks for understanding!
+Login feature is necessary for limiting api requests. Accounts will be deleted every 72 hours via firebase authentication. Thanks for understanding!
