@@ -14,5 +14,5 @@ Login feature is necessary for limiting api requests. Accounts will be deleted e
 ![sms3](https://user-images.githubusercontent.com/60866363/113940661-a8fc1e00-97b2-11eb-8202-9e9d4bf0cf59.gif)
 ![sms4](https://user-images.githubusercontent.com/60866363/113940668-ab5e7800-97b2-11eb-93fb-e9bbf7db2b87.gif)
 ![sms5](https://user-images.githubusercontent.com/60866363/113940680-ad283b80-97b2-11eb-935f-eda727f5e57e.gif)
-![sms6](https://user-images.githubusercontent.com/60866363/113940688-aef1ff00-97b2-11eb-8838-4567a806582c.gif)
+ 
 
